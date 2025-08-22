@@ -1,0 +1,15 @@
+{% block body %}
+{% if app.request.cookies.get('cart_products') %}
+    <div class="cart navbar" style="background-color: #e3f2fd;" data-bs-theme="light">
+        <a href="{{ path('app_cart_show')}}">{{load_products(app.request.cookies.get('cart_products'))}}</a>    
+    </div>
+
+    <div>
+        {% for f in app.flashes %}
+            {% for m in f %}
+                <div class="alert alert-primary" role="alert">{{m}}</div>
+            {% endfor %}            
+        {% endfor %}        
+    </div>
+{% endif %}    
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{product.name}}{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">{{product.name}}</h1>
+
+    <a href="{{ path('app_product_index') }}">Regresar</a>
+
+    <div class="container">
+        <div>{{ product.tags ? product.tags|join(', ') : '' }}</div>
+        <div>{{product.description}}</div>
+        <div>{{ show_images( product.images ? product.images : [])|raw}}</div>
+
+        {% include 'product/btncart.html.twig' %}
+
+    </div>    
+
+    <a href="{{ path('app_product_edit', {'id': product.id}) }}" class="btn btn-primary">Actualizar</a>
+
+    {{ include('product/_delete_form.html.twig') }}
+{% endblock %}

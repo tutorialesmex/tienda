@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Productos{% endblock %}
+
+{% block body %}
+<div class="container">
+    <a href="{{ path('app_product_new') }}">Nuevo producto</a>
+
+    <div class="products row justify-content-start mt-4">
+    {% for product in products %}
+        <div class="product item col-sm-3">
+            <a href="{{path('app_product_show',{'id':product.id})}}"><div class="name">{{product.name}}</div></a>
+            <div class="price">{{product.price}}</div>
+            <a href="{{path('app_product_show',{'id':product.id})}}"><div class="image"><img src="{{product.images ? product.images[0]:''}}" width="250"/></div></a>
+        </div>        
+    {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

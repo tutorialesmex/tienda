@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Productos agregados{% endblock %}
+
+{% block body %}
+    <h1>Productos agregados</h1>
+    
+    <div><a href="{{ path('app_product_index') }}" class="btn btn-link">
+    Seguir comprando</a></div>
+
+    <div><a href="{{ path('app_cart_terminar') }}" class="btn btn-success">
+    Terminar compra</a></div>
+
+    <div><a href="{{ path('app_cart_clean') }}" class="btn btn-warning">
+    Vaciar carrito</a></div>
+   
+    {% for product in products %}
+     <div class="product container border mt-2">
+        <div class="id">{{ product.id }}</div>
+        <div class="name">{{ product.name }}</div>
+        <div class="descripcion">{{ product.description }}</div>
+        <div class="images">{{ show_images(product.images ? product.images : [])|raw }}</div>
+    </div>
+    {% endfor %}
+    
+{% endblock %}
